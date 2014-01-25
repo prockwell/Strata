@@ -1,6 +1,8 @@
 package
 {
 	import Main.BlueSquare;
+	import Main.SpikeLayer;
+	import Main.YellowTriangle;
 
 	import com.sociodox.theminer.TheMiner;
 
@@ -9,10 +11,12 @@ package
 	import flash.events.Event;
 	import flash.ui.Mouse;
 
-	[SWF(backgroundColor="#333333", frameRate="30", width="1280", height="720")]
+	[SWF(backgroundColor="#333333", frameRate="30", width="1024", height="576")]
 	public class Strata extends Sprite
 	{
-		private var _square:BlueSquare;
+		public static var SPIKE_LAYER:Sprite;
+		public static var RING_LAYER:Sprite;
+		public static var BLOCK_LAYER:Sprite;
 
 	    public function Strata()
 	    {
@@ -24,20 +28,25 @@ package
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			this.addChild(new TheMiner());
 
+			//Create layers
+			SPIKE_LAYER = new SpikeLayer();
+			addChild(SPIKE_LAYER);
 
-			//_square = new BlueSquare();
-			//this.addChild(_square);
-
-			var follower:Follower = new Follower(BlueSquare);
-			addChild(follower);
-
-			//this.addEventListener(Event.ENTER_FRAME, update);
+			//create player
+			createPlayer();
 		}
 
-		private function update(e:Event):void
+		private function createPlayer():void
 		{
-			_square.x = stage.mouseX;
-			_square.y = stage.mouseY;
+			var yellowTriangle:Follower = new Follower(YellowTriangle, true, 10);
+			addChild(yellowTriangle);
+
+			var blueSquare:Follower = new Follower(BlueSquare, true, 4);
+			addChild(blueSquare);
+
+
+			SPIKE_LAYER.mask = yellowTriangle;
+
 		}
 	}
 }

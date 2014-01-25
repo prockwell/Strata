@@ -20,8 +20,8 @@ package
 
 			if(centerSprite)
 			{
-				_skin.x = this.x + _skin.width/2;
-				_skin.y = this.y + _skin.height/2;
+				_skin.x = this.x - _skin.width/2;
+				_skin.y = this.y - _skin.height/2;
 			}
 		}
 	}

@@ -4,14 +4,17 @@ package
 
 	public class Follower extends Creature
 	{
-		public function Follower(Skin:Class)
+		private var _followSpeed:Number;
+
+		public function Follower(Skin:Class, centerSprite:Boolean, followSpeed:Number = 5)
 		{
-			super(Skin, true);
+			_followSpeed = followSpeed;
+			super(Skin, centerSprite);
 
 			this.addEventListener(Event.ADDED_TO_STAGE, init, false, 0, true);
 		}
 
-		private function init(e:Event)
+		private function init(e:Event):void
 		{
 			this.removeEventListener(Event.ADDED_TO_STAGE, init);
 			this.stage.addEventListener(Event.ENTER_FRAME, onEnterFrame, false, 0, true);
@@ -19,13 +22,11 @@ package
 
 		private function onEnterFrame(e:Event):void
 		{
-
-
 			trace("!!!");
 			var dx:int = this.x - stage.mouseX;
 			var dy:int = this.y - stage.mouseY;
-			this.x -= dx / 5;
-			this.y -= dy /5;
+			this.x -= dx / _followSpeed;
+			this.y -= dy / _followSpeed;
 
 
 			//this.x = mouseX;
