@@ -18,6 +18,7 @@ package
 		public static const SPIKE_LAYER_INDEX:int = 1;
 		public static const RING_LAYER_INDEX:int = 2;
 		public static const BLOCK_LAYER_INDEX:int = 3;
+		public static const TITLE_LAYER_INDEX:int = 4;
 
 		public static var layers:Vector.<Layer>;
 		public static var _activeLayerIndex:int;
@@ -55,10 +56,10 @@ package
 			layers[SPIKE_LAYER_INDEX] = new Layer(new SpikeLayer());
 			layers[RING_LAYER_INDEX] = new Layer(new RingLayer());
 			layers[BLOCK_LAYER_INDEX] = new Layer(new BlockLayer());
+			layers[TITLE_LAYER_INDEX] = new Layer(new TitleLayer());
 
 			//set active layer to the top
 			_activeLayerIndex = TOP_LAYER_INDEX;
-
 
 			addChild(layers[TOP_LAYER_INDEX]);
 			layers[TOP_LAYER_INDEX].setActive();
@@ -72,6 +73,9 @@ package
 			addChild(layers[BLOCK_LAYER_INDEX]);
 			layers[BLOCK_LAYER_INDEX].setHidden();
 
+			addChild(layers[TITLE_LAYER_INDEX]);
+			layers[TITLE_LAYER_INDEX].setHidden();
+
 			_maskContainer = new Sprite();
 			addChild(_maskContainer);
 
@@ -80,6 +84,7 @@ package
 			masks[TOP_LAYER_INDEX] = new SpikeMask();
 			masks[SPIKE_LAYER_INDEX] = new RingMask();
 			masks[RING_LAYER_INDEX] = new BlockMask();
+			masks[BLOCK_LAYER_INDEX] = new BlockMask();
 
 			//create player
 			createAvatar();
