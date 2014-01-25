@@ -6,7 +6,7 @@
     </list>
     <ignored path="Strata.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390615335693" ignored="false" />
+    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390615346099" ignored="false" />
     <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390615021228" ignored="false" />
     <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390614450011" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -364,7 +364,11 @@
       <created>1390615337610</created>
       <updated>1390615337610</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adding main.fla file and .swc">
+      <created>1390615351845</created>
+      <updated>1390615351845</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
