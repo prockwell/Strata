@@ -21,7 +21,7 @@ package
 		public static const RING_LAYER_INDEX:int = 2;
 		public static const BLOCK_LAYER_INDEX:int = 3;
 
-		public static var layers:Vector.<Sprite>;
+		public static var layers:Vector.<MovieClip>;
 		public static var _activeLayer:int;
 		private var _activeMask:MovieClip;
 
@@ -48,7 +48,7 @@ package
 			_followingMouseDict = new Dictionary();
 
 			//CREATE LAYERS
-			layers = new Vector.<Sprite>();
+			layers = new Vector.<MovieClip>();
 			layers[TOP_LAYER_INDEX] = new TopLayer();
 			layers[SPIKE_LAYER_INDEX] = new SpikyLayer();
 
@@ -88,14 +88,17 @@ package
 
 		private function onMouseDown(e:MouseEvent):void
 		{
-			_mouseDown = true;
-			eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 20, scaleY:10}).easing(Cubic.easeIn).onComplete(goDownLayer);
+			if(e.target.name == "crack")
+			{
+				_mouseDown = true;
+				eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 20, scaleY:10}).easing(Cubic.easeIn).onComplete(goDownLayer, e.target);
+			}
 		}
 
 		private function onMouseUp(e:MouseEvent):void
 		{
 			_mouseDown = false;
-			//eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 1, scaleY:1}).easing(Cubic.easeOut);
+			eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 1, scaleY:1}).easing(Cubic.easeOut);
 		}
 
 		private function createAvatar():void
@@ -117,16 +120,23 @@ package
 
 		}
 
-		private function goDownLayer():void
+		private function goDownLayer(crack:MovieClip):void
 		{
+			//remove old active layer
+			var oldLayer:MovieClip = layers[_activeLayer];
+			removeChild(oldLayer);
+
 			//update the active layer
 			_activeLayer = _activeLayer + 1;
 
 			//unmask masked layer
-			var maskedLayer:Sprite = layers[_activeLayer];
+			var maskedLayer:MovieClip = layers[_activeLayer];
 			maskedLayer.mask = null;
 			detachFollowMouse(_activeMask);
 			this.removeChild(_activeMask);
+
+			//remove crack
+			maskedLayer.removeChild(crack);
 		}
 
 		private function goUpLayer():void

@@ -4,16 +4,13 @@
     <list default="true" id="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Main.swc" afterPath="$PROJECT_DIR$/lib/Main.swc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Follower.as" afterPath="$PROJECT_DIR$/src/Follower.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Strata.as" afterPath="$PROJECT_DIR$/src/Strata.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Strata.iml" afterPath="$PROJECT_DIR$/Strata.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Strata.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390664796413" ignored="false" />
     <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390672924335" ignored="false" />
-    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390678430480" ignored="false" />
+    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390680369923" ignored="false" />
     <file path="/Creature.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390628706030" ignored="false" />
     <file path="/Follower.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390664058195" ignored="false" />
     <file path="/a.dummy" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390665850158" ignored="false" />
@@ -80,11 +77,10 @@
       <file leaf-file-name="Strata.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Strata.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="0" selection-start="3478" selection-end="3478" vertical-scroll-proportion="1.4197761">
+            <state line="132" column="49" selection-start="3421" selection-end="3421" vertical-scroll-proportion="0.41226214">
               <folding>
                 <element signature="e#11#42#0" expanded="true" />
                 <element signature="n#!!block;n#createAvatar#0;n#Strata#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#goDownLayer#0;n#Strata#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
               </folding>
             </state>
@@ -465,11 +461,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.74801064" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.66445625" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39920425" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2519894" sideWeight="0.50035286" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2519894" sideWeight="0.49964714" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33554375" sideWeight="0.50035286" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33554375" sideWeight="0.49964714" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -553,7 +549,6 @@
           <folding>
             <element signature="e#11#42#0" expanded="true" />
             <element signature="n#!!block;n#createAvatar#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#goDownLayer#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -579,7 +574,6 @@
           <folding>
             <element signature="e#11#42#0" expanded="true" />
             <element signature="n#!!block;n#createAvatar#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#goDownLayer#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -599,13 +593,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/Code/flexSDK/frameworks/libs/air/airglobal.swc!/library.swf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1032" column="13" selection-start="47170" selection-end="47170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Strata.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="0" selection-start="3478" selection-end="3478" vertical-scroll-proportion="1.4197761">
+        <state line="132" column="49" selection-start="3421" selection-end="3421" vertical-scroll-proportion="0.41226214">
           <folding>
             <element signature="e#11#42#0" expanded="true" />
             <element signature="n#!!block;n#createAvatar#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#goDownLayer#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
