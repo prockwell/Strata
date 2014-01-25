@@ -1,22 +1,40 @@
 package
 {
-	import Main.BlueSquare;
-	import Main.SpikeLayer;
-	import Main.YellowTriangle;
+	import aze.motion.easing.Cubic;
+	import aze.motion.easing.Quint;
+	import aze.motion.eaze;
 
 	import com.sociodox.theminer.TheMiner;
 
-	import flash.display.Sprite;
-	import flash.display.Stage;
-	import flash.events.Event;
-	import flash.ui.Mouse;
+	import flash.display.MovieClip;
 
-	[SWF(backgroundColor="#333333", frameRate="30", width="1024", height="576")]
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.utils.Dictionary;
+
+	[SWF(backgroundColor="#000000", frameRate="30", width="1024", height="576")]
 	public class Strata extends Sprite
 	{
-		public static var SPIKE_LAYER:Sprite;
-		public static var RING_LAYER:Sprite;
-		public static var BLOCK_LAYER:Sprite;
+		public static const TOP_LAYER_INDEX:int = 0;
+		public static const SPIKE_LAYER_INDEX:int = 1;
+		public static const RING_LAYER_INDEX:int = 2;
+		public static const BLOCK_LAYER_INDEX:int = 3;
+
+		public static var layers:Vector.<Sprite>;
+		public static var _activeLayer:int;
+		private var _activeMask:MovieClip;
+
+		//{
+		//  sprite:Sprite
+		//  speed:Number
+		//}
+		private var _followingMouseDict:Dictionary;
+
+		private var _mouseDown:Boolean;
+
+		//ANIMATIONS
+		private const MASK_ZOOM_TIME:Number = 0.8;
 
 	    public function Strata()
 	    {
@@ -27,26 +45,109 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			this.addChild(new TheMiner());
+			_followingMouseDict = new Dictionary();
 
-			//Create layers
-			SPIKE_LAYER = new SpikeLayer();
-			addChild(SPIKE_LAYER);
+			//CREATE LAYERS
+			layers = new Vector.<Sprite>();
+			layers[TOP_LAYER_INDEX] = new TopLayer();
+			layers[SPIKE_LAYER_INDEX] = new SpikyLayer();
+
+			//set active layer to the top
+			_activeLayer = TOP_LAYER_INDEX;
+			addChild(layers[TOP_LAYER_INDEX]);
+			addChild(layers[SPIKE_LAYER_INDEX]);
 
 			//create player
-			createPlayer();
+			createAvatar();
+
+			//UPDATE
+			this.addEventListener(Event.ENTER_FRAME, update);
+
+			//MOUSE PRESS
+			this.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			this.addEventListener(MouseEvent.MOUSE_UP, onMouseUp)
 		}
 
-		private function createPlayer():void
+		private function update(e:Event):void
 		{
-			var yellowTriangle:Follower = new Follower(YellowTriangle, true, 10);
-			addChild(yellowTriangle);
+			//if the mask is expanding do not allow mouse follow
+			if(_mouseDown)
+			{
+				return;
+			}
 
-			var blueSquare:Follower = new Follower(BlueSquare, true, 4);
-			addChild(blueSquare);
+			//MOUSE FOLLOWING OBJECTS
+			for each (var followObject:Object in _followingMouseDict)
+			{
+				var dx:int = followObject.sprite.x - stage.mouseX;
+				var dy:int = followObject.sprite.y - stage.mouseY;
+				followObject.sprite.x -= dx / followObject.speed;
+				followObject.sprite.y -= dy / followObject.speed;
+			}
+		}
 
+		private function onMouseDown(e:MouseEvent):void
+		{
+			_mouseDown = true;
+			eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 20, scaleY:10}).easing(Cubic.easeIn).onComplete(goDownLayer);
+		}
 
-			SPIKE_LAYER.mask = yellowTriangle;
+		private function onMouseUp(e:MouseEvent):void
+		{
+			_mouseDown = false;
+			//eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 1, scaleY:1}).easing(Cubic.easeOut);
+		}
 
+		private function createAvatar():void
+		{
+			//create mask
+			var diamondMask:DiamondMask = new DiamondMask();
+			this.addChild(diamondMask);
+			_activeMask = diamondMask;
+			layers[SPIKE_LAYER_INDEX].mask = diamondMask;
+			attachFollowMouse(diamondMask, 4);
+
+			//create avatar shell
+			var hyper:HyperAvatarShell = new HyperAvatarShell();
+			this.addChild(hyper);
+			attachFollowMouse(hyper, 6);
+			var sub:SubAvatarShell = new SubAvatarShell();
+			this.addChild(sub);
+			attachFollowMouse(sub, 8);
+
+		}
+
+		private function goDownLayer():void
+		{
+			//update the active layer
+			_activeLayer = _activeLayer + 1;
+
+			//unmask masked layer
+			var maskedLayer:Sprite = layers[_activeLayer];
+			maskedLayer.mask = null;
+			detachFollowMouse(_activeMask);
+			this.removeChild(_activeMask);
+		}
+
+		private function goUpLayer():void
+		{
+			//implement
+		}
+
+		private function changeLayer(goingDown:Boolean):void
+		{
+
+		}
+
+		private function attachFollowMouse(sprite:Sprite, speed:Number):void
+		{
+			var followObject:Object = {sprite: sprite, speed: speed };
+			_followingMouseDict[sprite] = followObject;
+		}
+
+		private function detachFollowMouse(sprite:Sprite):void
+		{
+			delete _followingMouseDict[sprite];
 		}
 	}
 }
