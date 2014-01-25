@@ -4,6 +4,11 @@
     <configurations>
       <configuration name="Strata" target-platform="Desktop" pure-as="true" main-class="Strata" output-file="Strata.swf" output-folder="$MODULE_DIR$/out/production/Strata">
         <dependencies target-player="11.4">
+          <entries>
+            <entry library-name="Main" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
           <sdk name="flexSDK" />
         </dependencies>
         <compiler-options />
@@ -21,6 +26,7 @@
     </content>
     <orderEntry type="jdk" jdkName="flexSDK" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Main" level="project" />
   </component>
 </module>
 

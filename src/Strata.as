@@ -1,13 +1,16 @@
-package {
+package
+{
+	import Main.StartMc;
 
-import flash.display.Sprite;
-import flash.text.TextField;
+	import flash.display.Sprite;
 
-public class Strata extends Sprite {
-    public function Strata() {
-        var textField:TextField = new TextField();
-        textField.text = "Hello, World";
-        addChild(textField);
-    }
-}
+	[SWF(width="1280", height="720")]
+	public class Strata extends Sprite
+	{
+	    public function Strata()
+	    {
+	        var startMc:StartMc = new StartMc();
+		    addChild(startMc);
+	    }
+	}
 }
