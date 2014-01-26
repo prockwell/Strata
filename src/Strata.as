@@ -210,6 +210,11 @@ package
 			_activeLayerIndex = _activeLayerIndex + 1;
 			_layers[_activeLayerIndex].setActive();
 
+			if(_activeLayerIndex == TITLE_LAYER_INDEX)
+			{
+				return;
+			}
+
 			//create new masked layer
 			var newMaskLayer:Layer = _layers[_activeLayerIndex + 1];
 			newMaskLayer.setMasked();
