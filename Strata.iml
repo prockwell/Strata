@@ -8,9 +8,6 @@
             <entry library-name="Main" library-level="project">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-name="TheMiner" library-level="project">
-              <dependency linkage="Merged" />
-            </entry>
             <entry library-name="src" library-level="application">
               <dependency linkage="Merged" />
             </entry>
@@ -42,7 +39,6 @@
     <orderEntry type="jdk" jdkName="flexSDK" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Main" level="project" />
-    <orderEntry type="library" exported="" name="TheMiner" level="project" />
     <orderEntry type="library" exported="" name="eaze" level="application" />
     <orderEntry type="library" exported="" name="src" level="application" />
     <orderEntry type="library" exported="" name="SpikeLayer" level="project" />

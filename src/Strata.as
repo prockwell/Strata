@@ -2,8 +2,6 @@ package
 {
 	import aze.motion.eaze;
 
-	import com.sociodox.theminer.TheMiner;
-
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -53,7 +51,6 @@ package
 		private function init(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
-			this.addChild(new TheMiner());
 			_followingMouseDict = new Dictionary();
 
 			//CREATE LAYERS
