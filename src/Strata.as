@@ -18,9 +18,13 @@ package
 		public static const BLOCK_LAYER_INDEX:int = 3;
 		public static const TITLE_LAYER_INDEX:int = 4;
 
-		public static var layers:Vector.<Layer>;
-		public static var _activeLayerIndex:int;
-		public static var _activeMask:MovieClip;
+		private var _layers:Vector.<Layer>;
+		private var _activeLayerIndex:int;
+		private var _activeMask:MovieClip;
+
+
+		private var _hyperShell:MovieClip;
+		private var _subShell:MovieClip;
 
 		//{
 		//  sprite:Sprite
@@ -53,39 +57,39 @@ package
 			_followingMouseDict = new Dictionary();
 
 			//CREATE LAYERS
-			layers = new Vector.<Layer>();
-			layers[TOP_LAYER_INDEX] = new Layer(new TopLayer());
-			layers[SPIKE_LAYER_INDEX] = new Layer(new SpikeLayer());
-			layers[RING_LAYER_INDEX] = new Layer(new RingLayer());
-			layers[BLOCK_LAYER_INDEX] = new Layer(new BlockLayer());
-			layers[TITLE_LAYER_INDEX] = new Layer(new TitleLayer());
+			_layers = new Vector.<Layer>();
+			_layers[TOP_LAYER_INDEX] = new Layer(new TopLayer());
+			_layers[SPIKE_LAYER_INDEX] = new Layer(new SpikeLayer());
+			_layers[RING_LAYER_INDEX] = new Layer(new RingLayer());
+			_layers[BLOCK_LAYER_INDEX] = new Layer(new BlockLayer());
+			_layers[TITLE_LAYER_INDEX] = new Layer(new TitleLayer());
 
 			//set active layer to the top
 			_activeLayerIndex = TOP_LAYER_INDEX;
 
-			addChild(layers[TOP_LAYER_INDEX]);
-			layers[TOP_LAYER_INDEX].setActive();
+			addChild(_layers[TOP_LAYER_INDEX]);
+			_layers[TOP_LAYER_INDEX].setActive();
 
-			addChild(layers[SPIKE_LAYER_INDEX]);
-			layers[SPIKE_LAYER_INDEX].setMasked();
+			addChild(_layers[SPIKE_LAYER_INDEX]);
+			_layers[SPIKE_LAYER_INDEX].setMasked();
 
-			addChild(layers[RING_LAYER_INDEX]);
-			layers[RING_LAYER_INDEX].setHidden();
+			addChild(_layers[RING_LAYER_INDEX]);
+			_layers[RING_LAYER_INDEX].setHidden();
 
-			addChild(layers[BLOCK_LAYER_INDEX]);
-			layers[BLOCK_LAYER_INDEX].setHidden();
+			addChild(_layers[BLOCK_LAYER_INDEX]);
+			_layers[BLOCK_LAYER_INDEX].setHidden();
 
-			addChild(layers[TITLE_LAYER_INDEX]);
-			layers[TITLE_LAYER_INDEX].setHidden();
+			addChild(_layers[TITLE_LAYER_INDEX]);
+			_layers[TITLE_LAYER_INDEX].setHidden();
 
 			_maskContainer = new Sprite();
 			addChild(_maskContainer);
 
 			//CREATE MASKS
 			masks = new Vector.<MovieClip>();
-			masks[TOP_LAYER_INDEX] = new SpikeMask();
-			masks[SPIKE_LAYER_INDEX] = new RingMask();
-			masks[RING_LAYER_INDEX] = new BlockMask();
+			masks[TOP_LAYER_INDEX] = new TopMask();
+			masks[SPIKE_LAYER_INDEX] = new SpikeMask();
+			masks[RING_LAYER_INDEX] = new RingMask();
 			masks[BLOCK_LAYER_INDEX] = new BlockMask();
 
 			//create player
@@ -116,16 +120,15 @@ package
 
 
 			//CHECK DISTANCE TO CRACK
-			var crack:MovieClip = layers[_activeLayerIndex + 1].crack;
+			var crack:MovieClip = _layers[_activeLayerIndex + 1].crack;
 			var distanceToCrack:Number = Utils.distanceTwoPoints(_playerAvatar.x, _playerAvatar.y, crack.x, crack.y );
 			//trace("crack " + crack.x + " " + crack.y);
 			//trace("player " + _playerAvatar.x + " " + _playerAvatar.y);
 			//trace(distanceToCrack);
 
 			//CHECK FOR NASTIES
-			if(layers[_activeLayerIndex+ 1].nasty && _playerAvatar.hitTestObject(layers[_activeLayerIndex +1].nasty))
+			if(_layers[_activeLayerIndex+ 1].nasty && _playerAvatar.hitTestObject(_layers[_activeLayerIndex +1].nasty))
 			{
-				trace("!!!!!!!");
 				goUpLayer();
 			}
 
@@ -152,19 +155,19 @@ package
 		{
 			//create avatar ship
 			_playerAvatar = new PlayerAvatar();
-			layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_layers[_activeLayerIndex + 1].addChild(_playerAvatar);
 			_playerAvatar.x = stage.stageWidth / 2;
 			_playerAvatar.y = stage.stageHeight / 2;
 
-			createAvatarMask();
-
 			//create avatar shell
-			var hyper:HyperAvatarShell = new HyperAvatarShell();
-			this.addChild(hyper);
-			attachFollowAvatar(hyper, 6);
-			var sub:SubAvatarShell = new SubAvatarShell();
-			this.addChild(sub);
-			attachFollowAvatar(sub, 8);
+			_hyperShell = new HyperAvatarShell();
+			this.addChild(_hyperShell);
+			attachFollowAvatar(_hyperShell, 6);
+			_subShell = new SubAvatarShell();
+			this.addChild(_subShell);
+			attachFollowAvatar(_subShell, 8);
+
+			createAvatarMask();
 		}
 
 		private function createAvatarMask():void
@@ -173,16 +176,24 @@ package
 			_activeMask.scaleX = 1;
 			_activeMask.scaleY = 1;
 			_maskContainer.addChild(_activeMask);
-			layers[_activeLayerIndex + 1].mask = _activeMask;
+			_layers[_activeLayerIndex + 1].mask = _activeMask;
 			attachFollowAvatar(_activeMask, 4);
+
+			var startLabel:String = "inBegin"+_activeLayerIndex;
+			var endLabel:String = "inEnd"+_activeLayerIndex;
+			eaze(_hyperShell).play(startLabel + ">" + endLabel);
 		}
 
 		private function removeAvatarMask():void
 		{
-			layers[_activeLayerIndex + 1].mask = null;
+			_layers[_activeLayerIndex + 1].mask = null;
 			detachFollowAvatar(_activeMask);
 			_maskContainer.removeChild(_activeMask);
 			_activeMask = null;
+
+			var startLabel:String = "outBegin"+_activeLayerIndex;
+			var endLabel:String = "outEnd"+_activeLayerIndex;
+			eaze(_hyperShell).play(startLabel + ">" + endLabel);
 		}
 
 		//DIMENSION TRAVEL ------------------------------------
@@ -192,7 +203,7 @@ package
 			trace("vvv DOWN LAYER vvv");
 
 			//remove old active layer
-			var oldLayer:Layer = layers[_activeLayerIndex];
+			var oldLayer:Layer = _layers[_activeLayerIndex];
 			oldLayer.setHidden();
 
 			//unmask active layer
@@ -200,10 +211,10 @@ package
 
 			//update the active layer
 			_activeLayerIndex = _activeLayerIndex + 1;
-			layers[_activeLayerIndex].setActive();
+			_layers[_activeLayerIndex].setActive();
 
 			//create new masked layer
-			var newMaskLayer:Layer = layers[_activeLayerIndex + 1];
+			var newMaskLayer:Layer = _layers[_activeLayerIndex + 1];
 			newMaskLayer.setMasked();
 
 			//create new mask
@@ -212,8 +223,8 @@ package
 			//place the avatar into the new mask
 			var px:Number = _playerAvatar.x;
 			var py:Number = _playerAvatar.y;
-			layers[_activeLayerIndex].removeChild(_playerAvatar);
-			layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_layers[_activeLayerIndex].removeChild(_playerAvatar);
+			_layers[_activeLayerIndex + 1].addChild(_playerAvatar);
 			_playerAvatar.x = px;
 			_playerAvatar.y = py;
 
@@ -227,15 +238,15 @@ package
 			removeAvatarMask();
 
 			//remove old masked layer
-			var oldMaskLayer:Layer = layers[_activeLayerIndex + 1];
+			var oldMaskLayer:Layer = _layers[_activeLayerIndex + 1];
 			oldMaskLayer.setHidden();
 
 			//set the active layer to the layer before
 			_activeLayerIndex = _activeLayerIndex - 1;
-			layers[_activeLayerIndex].setActive();
+			_layers[_activeLayerIndex].setActive();
 
 			//set old active as new masked
-			layers[_activeLayerIndex + 1].setMasked();
+			_layers[_activeLayerIndex + 1].setMasked();
 
 			//create new mask
 			createAvatarMask();
@@ -243,8 +254,8 @@ package
 			//place the avatar into the new mask
 			var px:Number = _playerAvatar.x;
 			var py:Number = _playerAvatar.y;
-			layers[_activeLayerIndex + 2].removeChild(_playerAvatar);
-			layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_layers[_activeLayerIndex + 2].removeChild(_playerAvatar);
+			_layers[_activeLayerIndex + 1].addChild(_playerAvatar);
 			_playerAvatar.x = px;
 			_playerAvatar.y = py;
 
