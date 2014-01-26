@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/BlockLayer.swc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/RingLayer.swc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/SpikeLayer.swc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/BlockLayer.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/RingLayer.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SpikeLayer.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets_raw/PNG/BG_PNG/BG_1st_World-01.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/PNG/BG_PNG/BG_1st_World.png" afterPath="$PROJECT_DIR$/assets_raw/PNG/BG_PNG/BG_1st_World.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Main.swc" afterPath="$PROJECT_DIR$/lib/Main.swc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Layer.as" afterPath="$PROJECT_DIR$/src/Layer.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Strata.as" afterPath="$PROJECT_DIR$/src/Strata.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Strata.iml" afterPath="$PROJECT_DIR$/Strata.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/SpikeLayer.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/SpikeLayer.fla" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/SpikeLayer.swc" afterPath="$PROJECT_DIR$/lib/SpikeLayer.swc" />
     </list>
     <ignored path="Strata.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390709255960" ignored="false" />
+    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390720759783" ignored="false" />
     <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390720593743" ignored="false" />
     <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390720621451" ignored="false" />
     <file path="/Creature.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390628706030" ignored="false" />
@@ -89,7 +83,7 @@
       <file leaf-file-name="Strata.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Strata.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="13" selection-start="3060" selection-end="3060" vertical-scroll-proportion="0.5905512">
+            <state line="20" column="24" selection-start="579" selection-end="579" vertical-scroll-proportion="0.7853403">
               <folding>
                 <element signature="e#11#34#0" expanded="true" />
               </folding>
@@ -128,9 +122,7 @@
         <entry file="file://$PROJECT_DIR$/src/Creature.as">
           <provider selected="true" editor-type-id="text-editor">
             <state line="17" column="8" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#110#141#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -215,7 +207,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -279,6 +270,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,11 +286,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
@@ -493,8 +485,8 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.5424403" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45755967" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.54376656" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4562334" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5066313" sideWeight="0.50035286" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23342176" sideWeight="0.49964714" order="2" side_tool="false" content_ui="tabs" />
@@ -576,6 +568,27 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Avatar.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Layer.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="32" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Creature.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="8" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Layer.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="12" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
@@ -586,9 +599,7 @@
     <entry file="file://$PROJECT_DIR$/src/Creature.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="16" selection-start="389" selection-end="461" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#110#141#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -604,9 +615,7 @@
     <entry file="file://$PROJECT_DIR$/src/Creature.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="49" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#110#141#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -633,9 +642,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/senocular/utils/KeyObject.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="24" selection-start="529" selection-end="529" vertical-scroll-proportion="0.4379562">
-          <folding />
-        </state>
+        <state line="21" column="24" selection-start="529" selection-end="529" vertical-scroll-proportion="0.4379562" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Avatar.as">
@@ -648,9 +655,7 @@
     <entry file="file://$PROJECT_DIR$/src/Creature.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="8" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#110#141#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -670,7 +675,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Strata.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="13" selection-start="3060" selection-end="3060" vertical-scroll-proportion="0.5905512">
+        <state line="20" column="24" selection-start="579" selection-end="579" vertical-scroll-proportion="0.7853403">
           <folding>
             <element signature="e#11#34#0" expanded="true" />
           </folding>
