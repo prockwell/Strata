@@ -10,6 +10,7 @@ package
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
+	import flash.ui.Mouse;
 	import flash.utils.Dictionary;
 
 	[SWF(backgroundColor="#000000", frameRate="30", width="1024", height="576")]
@@ -31,17 +32,18 @@ package
 		//}
 		private var _followingMouseDict:Dictionary;
 
-		private var _leftMouseDown:Boolean;
-		private var _rightMouseDown:Boolean;
+		private var _layerTransitionActive:Boolean;
 
 		private var masks:Vector.<MovieClip>;
 		private var _maskContainer:Sprite;
 
 		//ANIMATIONS
-		private const MASK_ZOOM_TIME:Number = 0.8;
+		private const MASK_ZOOM_TIME:Number = 0.9;
 
 		//AVATAR
 		private var _playerAvatar:PlayerAvatar;
+		private const MASK_GROWTH_DISTANCE:Number = 200;
+		private const MASK_TRIGGER_DISTANCE:Number = 40;
 
 	    public function Strata()
 	    {
@@ -95,26 +97,12 @@ package
 
 			//UPDATE
 			this.addEventListener(Event.ENTER_FRAME, update);
-
-			//LEFT MOUSE PRESS
-			this.addEventListener(MouseEvent.MOUSE_DOWN, onLeftMouseDown);
-			this.addEventListener(MouseEvent.MOUSE_UP, onLeftMouseUp)
-
-			//RIGHT MOUSE PRESS
-			//this.addEventListener(MouseEvent.RIGHT_MOUSE_DOWN, onRightMouseDown);
-			//this.addEventListener(MouseEvent.RIGHT_MOUSE_UP, onRightMouseUp)
 		}
 
 		//UPDATE ------------------------------------
 
 		private function update(e:Event):void
 		{
-			//if the mask is expanding do not allow mouse follow
-			if(_leftMouseDown)
-			{
-				return;
-			}
-
 			//MOUSE FOLLOWING OBJECTS
 			for each (var followObject:Object in _followingMouseDict)
 			{
@@ -123,49 +111,35 @@ package
 				followObject.sprite.x -= dx / followObject.speed;
 				followObject.sprite.y -= dy / followObject.speed;
 			}
-		}
 
-		//MOUSE EVENTS ------------------------------------
-
-		private function onLeftMouseDown(e:MouseEvent):void
-		{
-			//avoid on bottom layer
-			if(_activeLayerIndex == BLOCK_LAYER_INDEX || _rightMouseDown)
+			//if the mask is expanding do not allow distance check
+			if(_layerTransitionActive)
 			{
 				return;
 			}
 
-			if(e.target.name == "crack")
+
+			//CHECK DISTANCE TO CRACK
+			var crack:MovieClip = layers[_activeLayerIndex + 1].crack;
+			var distanceToCrack:Number = Utils.distanceTwoPoints(_playerAvatar.x, _playerAvatar.y, crack.x, crack.y );
+			//trace("crack " + crack.x + " " + crack.y);
+			//trace("player " + _playerAvatar.x + " " + _playerAvatar.y);
+			//trace(distanceToCrack);
+
+			//GROW LAYER
+			if(distanceToCrack < MASK_GROWTH_DISTANCE)
 			{
-				_leftMouseDown = true;
-				eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 20, scaleY:10}).easing(Cubic.easeIn).onComplete(goDownLayer);
+				var maskScale:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, 6, 1, distanceToCrack);
+				_activeMask.scaleX = maskScale;
+				_activeMask.scaleY = maskScale;
+
+				//GO DOWN LAYER
+				if(distanceToCrack < MASK_TRIGGER_DISTANCE)
+				{
+					_layerTransitionActive = true;
+					eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 20, scaleY:10}).onComplete(goDownLayer);
+				}
 			}
-		}
-
-		private function onLeftMouseUp(e:MouseEvent):void
-		{
-			_leftMouseDown = false;
-
-			//TODO implement
-			//eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 1, scaleY:1}).easing(Cubic.easeOut);
-		}
-
-		private function onRightMouseDown(e:MouseEvent):void
-		{
-			//avoid on top layer
-			if(_activeLayerIndex == TOP_LAYER_INDEX || _leftMouseDown)
-			{
-				return;
-			}
-
-			_rightMouseDown = true;
-
-
-
-		}
-
-		private function onRightMouseUp(e:MouseEvent):void
-		{
 
 		}
 
@@ -228,6 +202,8 @@ package
 
 			//create new mask
 			createAvatarMask();
+
+			_layerTransitionActive = false;
 		}
 
 		private function goUpLayer():void
@@ -252,13 +228,6 @@ package
 		private function detachFollowAvatar(sprite:Sprite):void
 		{
 			delete _followingMouseDict[sprite];
-		}
-
-		private function distanceTwoPoints(x1:Number, x2:Number,  y1:Number, y2:Number):Number
-		{
-			var dx:Number = x1-x2;
-			var dy:Number = y1-y2;
-			return Math.sqrt(dx * dx + dy * dy);
 		}
 	}
 }
