@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RingLayer" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/RingLayer.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

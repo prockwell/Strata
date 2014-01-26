@@ -11,12 +11,14 @@ package
 	public class Layer extends MovieClip
 	{
 		public var crack:MovieClip;
+		public var nasty:MovieClip
 		private var _skin:MovieClip;
 
 		public function Layer(skin:MovieClip)
 		{
 			_skin = skin;
 			crack = _skin.crack;
+			nasty = _skin.nasty;
 
 			if(!crack)
 			{

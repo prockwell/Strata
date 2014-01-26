@@ -1,6 +1,5 @@
 package
 {
-	import aze.motion.easing.Cubic;
 	import aze.motion.eaze;
 
 	import com.sociodox.theminer.TheMiner;
@@ -8,9 +7,6 @@ package
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.geom.Point;
-	import flash.ui.Mouse;
 	import flash.utils.Dictionary;
 
 	[SWF(backgroundColor="#000000", frameRate="30", width="1024", height="576")]
@@ -126,6 +122,13 @@ package
 			//trace("player " + _playerAvatar.x + " " + _playerAvatar.y);
 			//trace(distanceToCrack);
 
+			//CHECK FOR NASTIES
+			if(layers[_activeLayerIndex+ 1].nasty && _playerAvatar.hitTestObject(layers[_activeLayerIndex +1].nasty))
+			{
+				trace("!!!!!!!");
+				goUpLayer();
+			}
+
 			//GROW LAYER
 			if(distanceToCrack < MASK_GROWTH_DISTANCE)
 			{
@@ -147,13 +150,13 @@ package
 
 		private function createAvatar():void
 		{
-			createAvatarMask();
-
 			//create avatar ship
 			_playerAvatar = new PlayerAvatar();
-			this.addChild(_playerAvatar);
+			layers[_activeLayerIndex + 1].addChild(_playerAvatar);
 			_playerAvatar.x = stage.stageWidth / 2;
 			_playerAvatar.y = stage.stageHeight / 2;
+
+			createAvatarMask();
 
 			//create avatar shell
 			var hyper:HyperAvatarShell = new HyperAvatarShell();
@@ -167,6 +170,8 @@ package
 		private function createAvatarMask():void
 		{
 			_activeMask = masks[_activeLayerIndex];
+			_activeMask.scaleX = 1;
+			_activeMask.scaleY = 1;
 			_maskContainer.addChild(_activeMask);
 			layers[_activeLayerIndex + 1].mask = _activeMask;
 			attachFollowAvatar(_activeMask, 4);
@@ -177,6 +182,7 @@ package
 			layers[_activeLayerIndex + 1].mask = null;
 			detachFollowAvatar(_activeMask);
 			_maskContainer.removeChild(_activeMask);
+			_activeMask = null;
 		}
 
 		//DIMENSION TRAVEL ------------------------------------
@@ -187,7 +193,7 @@ package
 
 			//remove old active layer
 			var oldLayer:Layer = layers[_activeLayerIndex];
-			removeChild(oldLayer);
+			oldLayer.setHidden();
 
 			//unmask active layer
 			removeAvatarMask();
@@ -203,13 +209,46 @@ package
 			//create new mask
 			createAvatarMask();
 
+			//place the avatar into the new mask
+			var px:Number = _playerAvatar.x;
+			var py:Number = _playerAvatar.y;
+			layers[_activeLayerIndex].removeChild(_playerAvatar);
+			layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_playerAvatar.x = px;
+			_playerAvatar.y = py;
+
 			_layerTransitionActive = false;
 		}
 
 		private function goUpLayer():void
 		{
 			trace("^^^ UP LAYER ^^^");
-			//implement
+
+			removeAvatarMask();
+
+			//remove old masked layer
+			var oldMaskLayer:Layer = layers[_activeLayerIndex + 1];
+			oldMaskLayer.setHidden();
+
+			//set the active layer to the layer before
+			_activeLayerIndex = _activeLayerIndex - 1;
+			layers[_activeLayerIndex].setActive();
+
+			//set old active as new masked
+			layers[_activeLayerIndex + 1].setMasked();
+
+			//create new mask
+			createAvatarMask();
+
+			//place the avatar into the new mask
+			var px:Number = _playerAvatar.x;
+			var py:Number = _playerAvatar.y;
+			layers[_activeLayerIndex + 2].removeChild(_playerAvatar);
+			layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_playerAvatar.x = px;
+			_playerAvatar.y = py;
+
+			_layerTransitionActive = false;
 		}
 
 		private function attachFollowAvatar(sprite:Sprite, speed:Number):void

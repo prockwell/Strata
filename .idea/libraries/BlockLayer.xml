@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="BlockLayer" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/BlockLayer.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

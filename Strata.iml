@@ -14,6 +14,15 @@
             <entry library-name="src" library-level="application">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="SpikeLayer" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="RingLayer" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="BlockLayer" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="flexSDK" />
         </dependencies>
@@ -36,6 +45,9 @@
     <orderEntry type="library" exported="" name="TheMiner" level="project" />
     <orderEntry type="library" exported="" name="eaze" level="application" />
     <orderEntry type="library" exported="" name="src" level="application" />
+    <orderEntry type="library" exported="" name="SpikeLayer" level="project" />
+    <orderEntry type="library" exported="" name="RingLayer" level="project" />
+    <orderEntry type="library" exported="" name="BlockLayer" level="project" />
   </component>
 </module>
 

@@ -2,21 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Utils.as" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Follower.as" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/BlockLayer.swc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/RingLayer.swc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/SpikeLayer.swc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/BlockLayer.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/RingLayer.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/SpikeLayer.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Main.swc" afterPath="$PROJECT_DIR$/lib/Main.swc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Layer.as" afterPath="$PROJECT_DIR$/src/Layer.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Strata.as" afterPath="$PROJECT_DIR$/src/Strata.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Strata.iml" afterPath="$PROJECT_DIR$/Strata.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Strata.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390709255960" ignored="false" />
-    <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390710016133" ignored="false" />
-    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390710891224" ignored="false" />
+    <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390720593743" ignored="false" />
+    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390720621451" ignored="false" />
     <file path="/Creature.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390628706030" ignored="false" />
     <file path="/Follower.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390664058195" ignored="false" />
     <file path="/a.dummy" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390689137123" ignored="false" />
-    <file path="/Layer.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390691189445" ignored="false" />
+    <file path="/Layer.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390715506089" ignored="false" />
     <file path="/Avatar.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390707765615" ignored="false" />
     <file path="/Utils.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390710062230" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -82,12 +89,9 @@
       <file leaf-file-name="Strata.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Strata.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.49215406">
+            <state line="108" column="13" selection-start="3060" selection-end="3060" vertical-scroll-proportion="0.5905512">
               <folding>
-                <element signature="e#11#42#0" expanded="true" />
-                <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
+                <element signature="e#11#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,7 +118,7 @@
       <file leaf-file-name="Layer.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Layer.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="12" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
+            <state line="20" column="32" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -153,9 +157,9 @@
         <option value="$PROJECT_DIR$/src/Creature.java" />
         <option value="$PROJECT_DIR$/src/Creature.as" />
         <option value="$PROJECT_DIR$/src/Follower.as" />
-        <option value="$PROJECT_DIR$/src/Layer.as" />
         <option value="$PROJECT_DIR$/src/Avatar.as" />
         <option value="$PROJECT_DIR$/src/Utils.as" />
+        <option value="$PROJECT_DIR$/src/Layer.as" />
         <option value="$PROJECT_DIR$/src/Strata.as" />
       </list>
     </option>
@@ -279,13 +283,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.General" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Code/eaze-tween-rc2-r84" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/BlockLayer.swc!/" />
     <property name="project.structure.side.proportion" value="0.14602804" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -489,8 +493,8 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.5291777" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47082227" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.5424403" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45755967" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5066313" sideWeight="0.50035286" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23342176" sideWeight="0.49964714" order="2" side_tool="false" content_ui="tabs" />
@@ -592,10 +596,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="e#11#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -613,10 +614,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="e#11#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,13 +629,6 @@
     <entry file="file://$USER_HOME$/Code/eaze-tween-rc2-r84/src/aze/motion/EazeTween.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="493" column="24" selection-start="13192" selection-end="13192" vertical-scroll-proportion="0.33272728" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Layer.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="12" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/senocular/utils/KeyObject.as">
@@ -670,14 +661,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Layer.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="32" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Strata.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1246" selection-end="1246" vertical-scroll-proportion="0.49215406">
+        <state line="108" column="13" selection-start="3060" selection-end="3060" vertical-scroll-proportion="0.5905512">
           <folding>
-            <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="e#11#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -747,7 +742,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>TheMiner</last-edited>
+          <last-edited>BlockLayer</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
