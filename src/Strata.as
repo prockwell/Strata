@@ -9,6 +9,7 @@ package
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.utils.Dictionary;
 
 	[SWF(backgroundColor="#000000", frameRate="30", width="1024", height="576")]
@@ -38,6 +39,9 @@ package
 
 		//ANIMATIONS
 		private const MASK_ZOOM_TIME:Number = 0.8;
+
+		//AVATAR
+		private var _playerAvatar:PlayerAvatar;
 
 	    public function Strata()
 	    {
@@ -114,8 +118,8 @@ package
 			//MOUSE FOLLOWING OBJECTS
 			for each (var followObject:Object in _followingMouseDict)
 			{
-				var dx:int = followObject.sprite.x - stage.mouseX;
-				var dy:int = followObject.sprite.y - stage.mouseY;
+				var dx:int = followObject.sprite.x - _playerAvatar.x;
+				var dy:int = followObject.sprite.y - _playerAvatar.y;
 				followObject.sprite.x -= dx / followObject.speed;
 				followObject.sprite.y -= dy / followObject.speed;
 			}
@@ -171,14 +175,19 @@ package
 		{
 			createAvatarMask();
 
+			//create avatar ship
+			_playerAvatar = new PlayerAvatar();
+			this.addChild(_playerAvatar);
+			_playerAvatar.x = stage.stageWidth / 2;
+			_playerAvatar.y = stage.stageHeight / 2;
+
 			//create avatar shell
 			var hyper:HyperAvatarShell = new HyperAvatarShell();
 			this.addChild(hyper);
-			attachFollowMouse(hyper, 6);
+			attachFollowAvatar(hyper, 6);
 			var sub:SubAvatarShell = new SubAvatarShell();
 			this.addChild(sub);
-			attachFollowMouse(sub, 8);
-
+			attachFollowAvatar(sub, 8);
 		}
 
 		private function createAvatarMask():void
@@ -186,13 +195,13 @@ package
 			_activeMask = masks[_activeLayerIndex];
 			_maskContainer.addChild(_activeMask);
 			layers[_activeLayerIndex + 1].mask = _activeMask;
-			attachFollowMouse(_activeMask, 4);
+			attachFollowAvatar(_activeMask, 4);
 		}
 
 		private function removeAvatarMask():void
 		{
 			layers[_activeLayerIndex + 1].mask = null;
-			detachFollowMouse(_activeMask);
+			detachFollowAvatar(_activeMask);
 			_maskContainer.removeChild(_activeMask);
 		}
 
@@ -227,19 +236,29 @@ package
 			//implement
 		}
 
-		private function attachFollowMouse(sprite:Sprite, speed:Number):void
+		private function attachFollowAvatar(sprite:Sprite, speed:Number):void
 		{
 			var followObject:Object = {sprite: sprite, speed: speed };
 			_followingMouseDict[sprite] = followObject;
 
 			//start sprite positioned on mouse
-			sprite.x = stage.mouseX;
-			sprite.y = stage.mouseY;
+			if(_playerAvatar)
+			{
+				sprite.x = _playerAvatar.x;
+				sprite.y = _playerAvatar.y;
+			}
 		}
 
-		private function detachFollowMouse(sprite:Sprite):void
+		private function detachFollowAvatar(sprite:Sprite):void
 		{
 			delete _followingMouseDict[sprite];
+		}
+
+		private function distanceTwoPoints(x1:Number, x2:Number,  y1:Number, y2:Number):Number
+		{
+			var dx:Number = x1-x2;
+			var dy:Number = y1-y2;
+			return Math.sqrt(dx * dx + dy * dy);
 		}
 	}
 }

@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Avatar.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/senocular/utils/KeyObject.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Main.swc" afterPath="$PROJECT_DIR$/lib/Main.swc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Strata.as" afterPath="$PROJECT_DIR$/src/Strata.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Strata.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390701897761" ignored="false" />
-    <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390687837101" ignored="false" />
-    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390700744537" ignored="false" />
+    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390705535867" ignored="false" />
+    <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390705824473" ignored="false" />
+    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390709170807" ignored="false" />
     <file path="/Creature.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390628706030" ignored="false" />
     <file path="/Follower.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390664058195" ignored="false" />
     <file path="/a.dummy" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390689137123" ignored="false" />
     <file path="/Layer.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390691189445" ignored="false" />
+    <file path="/Avatar.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390707765615" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,15 +82,23 @@
       <file leaf-file-name="Strata.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Strata.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="37" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.21978022">
+            <state line="139" column="38" selection-start="3798" selection-end="3798" vertical-scroll-proportion="0.42318842">
               <folding>
                 <element signature="e#11#42#0" expanded="true" />
-                <element signature="n#!!block;n#update#0;n#Strata#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#onRightMouseDown#0;n#Strata#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#attachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
+                <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Avatar.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Avatar.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="45" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#12#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,6 +154,7 @@
         <option value="$PROJECT_DIR$/src/Creature.as" />
         <option value="$PROJECT_DIR$/src/Follower.as" />
         <option value="$PROJECT_DIR$/src/Layer.as" />
+        <option value="$PROJECT_DIR$/src/Avatar.as" />
         <option value="$PROJECT_DIR$/src/Strata.as" />
       </list>
     </option>
@@ -197,6 +210,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -259,7 +273,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -283,11 +296,11 @@
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
-      <recent name="" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
+    </key>
+    <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Flash App.Strata">
@@ -470,25 +483,25 @@
     <frame x="0" y="22" width="1440" height="874" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18965517" sideWeight="0.49964714" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.7612732" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2387268" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14396612" sideWeight="0.52785146" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47214854" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2387268" sideWeight="0.50035286" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5066313" sideWeight="0.50035286" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23342176" sideWeight="0.49964714" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -563,12 +576,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#update#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#onRightMouseDown#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#attachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -599,12 +609,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#update#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#onRightMouseDown#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#attachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -628,12 +635,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#update#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#onRightMouseDown#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#attachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -657,13 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Follower.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="12" selection-start="636" selection-end="774" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Layer.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="12" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
@@ -671,17 +668,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Follower.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="12" selection-start="636" selection-end="774" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/senocular/utils/KeyObject.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="24" selection-start="529" selection-end="529" vertical-scroll-proportion="0.4379562">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Avatar.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#12#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Strata.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="37" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.21978022">
+        <state line="139" column="38" selection-start="3798" selection-end="3798" vertical-scroll-proportion="0.42318842">
           <folding>
             <element signature="e#11#42#0" expanded="true" />
-            <element signature="n#!!block;n#update#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#onRightMouseDown#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#removeAvatarMask#0;n#Strata#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#goUpLayer#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#attachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#detachFollowMouse#0;n#Strata#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#detachFollowAvatar#0;n#Strata#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
