@@ -38,7 +38,7 @@ package
 		private var _maskContainer:Sprite;
 
 		//ANIMATIONS
-		private const MASK_ZOOM_TIME:Number = 0.9;
+		private const MASK_ZOOM_TIME:Number = 0.4;
 
 		//AVATAR
 		private var _playerAvatar:PlayerAvatar;
@@ -143,7 +143,7 @@ package
 				if(distanceToCrack < MASK_TRIGGER_DISTANCE)
 				{
 					_layerTransitionActive = true;
-					eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 20, scaleY:10}).onComplete(goDownLayer);
+					eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 15, scaleY:10}).onComplete(goDownLayer);
 				}
 			}
 
@@ -219,6 +219,11 @@ package
 
 			//create new mask
 			createAvatarMask();
+
+			//animate in the mask
+			_activeMask.scaleX = 0.2;
+			_activeMask.scaleY = 0.2;
+			eaze(_activeMask).to(0.5, {scaleX:1, scaleY:1});
 
 			//place the avatar into the new mask
 			var px:Number = _playerAvatar.x;
