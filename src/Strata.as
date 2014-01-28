@@ -3,14 +3,17 @@ package
 	import aze.motion.eaze;
 
 	import com.greensock.TweenMax;
+	import com.senocular.utils.KeyObject;
 	import com.sociodox.theminer.TheMiner;
 
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.html.script.Package;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.media.SoundTransform;
+	import flash.ui.Keyboard;
 	import flash.utils.Dictionary;
 
 	[SWF(backgroundColor="#000000", frameRate="30", width="1024", height="576")]
@@ -28,7 +31,8 @@ package
 
 
 		private var _hyperShell:MovieClip;
-		private var _subShell:MovieClip;
+
+		private var _firstKeyPressed:Boolean = false;
 
 		//{
 		//  sprite:Sprite
@@ -41,17 +45,19 @@ package
 		private var masks:Vector.<MovieClip>;
 
 		//ANIMATIONS
-		private const MASK_ZOOM_TIME:Number = 0.4;
+		private const MASK_ZOOM_TIME:Number = 0.8;
 
 		//AVATAR
 		private var _playerAvatar:PlayerAvatar;
 		private const MASK_GROWTH_DISTANCE:Number = 200;
 		private const MASK_TRIGGER_DISTANCE:Number = 40;
+		private const MASK_FINAL_GROW_SIZE:Number = 14;
 
 		private var _sounds:Vector.<Sound>;
 		private var _soundChannels:Vector.<SoundChannel>;
 		private const SOUND_VOLUME:Number = 8;
 
+		private var key:KeyObject;
 
 	    public function Strata()
 	    {
@@ -61,9 +67,10 @@ package
 		private function init(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			key = new KeyObject(stage);
 
 			//MINER
-			this.addChild(new TheMiner());
+			//this.addChild(new TheMiner());
 
 			this.mouseEnabled = false
 			this.mouseChildren = false;
@@ -139,6 +146,15 @@ package
 
 		private function update(e:Event):void
 		{
+			//check if first key pressed to play intro anim
+			if(!_firstKeyPressed)
+			{
+				if (key.isDown(Keyboard.UP) || key.isDown(Keyboard.RIGHT) || (key.isDown(Keyboard.LEFT)))
+				{
+					playerStart();
+				}
+			}
+
 			//MOUSE FOLLOWING OBJECTS
 			for each (var followObject:Object in _followingMouseDict)
 			{
@@ -154,42 +170,46 @@ package
 				return;
 			}
 
-
 			//CHECK DISTANCE TO CRACK
-			var crack:MovieClip = _layers[_activeLayerIndex + 1].crack;
-			var distanceToCrack:Number = Utils.distanceTwoPoints(_playerAvatar.x, _playerAvatar.y, crack.x, crack.y );
-			//trace("crack " + crack.x + " " + crack.y);
-			//trace("player " + _playerAvatar.x + " " + _playerAvatar.y);
-			//trace(distanceToCrack);
-
-			//CHECK FOR NASTIES
-			if(_layers[_activeLayerIndex+ 1].nasty && _playerAvatar.hitTestObject(_layers[_activeLayerIndex +1].nasty))
+			if(_activeLayerIndex < TITLE_LAYER_INDEX)
 			{
-				goUpLayer();
-			}
+				var crack:MovieClip = _layers[_activeLayerIndex + 1].crack;
+				var distanceToCrack:Number = Utils.distanceTwoPoints(_playerAvatar.x, _playerAvatar.y, crack.x, crack.y );
+				//trace("crack " + crack.x + " " + crack.y);
+				//trace("player " + _playerAvatar.x + " " + _playerAvatar.y);
+				//trace(distanceToCrack);
 
-			//GROW LAYER
-			if(distanceToCrack < MASK_GROWTH_DISTANCE)
-			{
-				//grow the mask
-				var maskScale:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, 6, 1, distanceToCrack);
-				_activeMask.scaleX = maskScale;
-				_activeMask.scaleY = maskScale;
-
-				//bleed volume in from layer below
-				var maskedVolume:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, SOUND_VOLUME, 0, distanceToCrack);
-				if(_soundChannels[_activeLayerIndex + 1])
+				/*NOT IMPLEMENTED: CHECK FOR NASTIES
+				if(_layers[_activeLayerIndex+ 1].nasty && _playerAvatar.hitTestObject(_layers[_activeLayerIndex +1].nasty))
 				{
-					var soundTransform:SoundTransform = _soundChannels[_activeLayerIndex + 1].soundTransform;
-					soundTransform.volume = maskedVolume;
-					_soundChannels[_activeLayerIndex + 1].soundTransform = soundTransform;
-				}
+					goUpLayer();
+				}*/
 
-				//GO DOWN LAYER
-				if(distanceToCrack < MASK_TRIGGER_DISTANCE)
+				//GROW LAYER
+				if(distanceToCrack < MASK_GROWTH_DISTANCE)
 				{
-					_layerTransitionActive = true;
-					eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 15, scaleY:10}).onComplete(goDownLayer);
+					//grow the mask
+					var maskScale:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, 6, 1, distanceToCrack);
+					_activeMask.scaleX = maskScale;
+					_activeMask.scaleY = maskScale;
+
+					_hyperShell.scaleX = maskScale;
+					_hyperShell.scaleY = maskScale;
+
+					//bleed volume in from layer below
+					var maskedVolume:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, SOUND_VOLUME, 0, distanceToCrack);
+					if(_soundChannels[_activeLayerIndex + 1])
+					{
+						var soundTransform:SoundTransform = _soundChannels[_activeLayerIndex + 1].soundTransform;
+						soundTransform.volume = maskedVolume;
+						_soundChannels[_activeLayerIndex + 1].soundTransform = soundTransform;
+					}
+
+					//GO DOWN LAYER
+					if(distanceToCrack < MASK_TRIGGER_DISTANCE)
+					{
+						prepareGoDown();
+					}
 				}
 			}
 		}
@@ -225,11 +245,7 @@ package
 			//create avatar shell
 			_hyperShell = new HyperAvatarShell();
 			this.addChild(_hyperShell);
-			attachFollowAvatar(_hyperShell, 6);
-			_subShell = new SubAvatarShell();
-			this.addChild(_subShell);
-			attachFollowAvatar(_subShell, 8);
-
+			attachFollowAvatar(_hyperShell, 7);
 			createAvatarMask();
 		}
 
@@ -242,10 +258,15 @@ package
 			_layers[_activeLayerIndex + 1].mask = _activeMask;
 			attachFollowAvatar(_activeMask, 4);
 
-			var startLabel:String = "inBegin"+_activeLayerIndex;
-			var endLabel:String = "inEnd"+_activeLayerIndex;
-			eaze(_hyperShell).play(startLabel + ">" + endLabel);
-			eaze(_subShell).play(startLabel + ">" + endLabel);
+			if(_firstKeyPressed)
+			{
+				_hyperShell.scaleX = 1;
+				_hyperShell.scaleY = 1;
+
+				var startLabel:String = "inBegin"+_activeLayerIndex;
+				var endLabel:String = "inEnd"+_activeLayerIndex;
+				eaze(_hyperShell).play(startLabel + ">" + endLabel);
+			}
 		}
 
 		private function removeAvatarMask():void
@@ -254,32 +275,21 @@ package
 			detachFollowAvatar(_activeMask);
 			_layers[_activeLayerIndex + 1].playerContainer.removeChild(_activeMask);
 			_activeMask = null;
-
-			var startLabel:String = "outBegin"+_activeLayerIndex;
-			var endLabel:String = "outEnd"+_activeLayerIndex;
-			eaze(_hyperShell).play(startLabel + ">" + endLabel);
-			eaze(_subShell).play(startLabel + ">" + endLabel);
 		}
 
 		//DIMENSION TRAVEL ------------------------------------
 
-		private function goDownLayer():void
+		private function prepareGoDown():void
 		{
 			trace("vvv DOWN LAYER vvv");
+			_layerTransitionActive = true;
 
-			//remove old active layer
-			var oldLayer:Layer = _layers[_activeLayerIndex];
-			oldLayer.setHidden();
-
-			//unmask active layer
-			removeAvatarMask();
+			eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: MASK_FINAL_GROW_SIZE, scaleY:MASK_FINAL_GROW_SIZE}).onComplete(goDownEnd, _activeMask);
+			eaze(_hyperShell).to(MASK_ZOOM_TIME, {scaleX: MASK_FINAL_GROW_SIZE, scaleY:MASK_FINAL_GROW_SIZE});
 
 			//update the active layer
 			_activeLayerIndex = _activeLayerIndex + 1;
 			_layers[_activeLayerIndex].setActive();
-
-			//change the sound playing
-			playLayerSound();
 
 			if(_activeLayerIndex == TITLE_LAYER_INDEX)
 			{
@@ -305,10 +315,28 @@ package
 			_layers[_activeLayerIndex + 1].playerContainer.addChild(_playerAvatar);
 			_playerAvatar.x = px;
 			_playerAvatar.y = py;
-
-			_layerTransitionActive = false;
 		}
 
+		private function goDownEnd(oldMask:MovieClip):void
+		{
+			_layers[_activeLayerIndex].mask = null;
+			detachFollowAvatar(oldMask);
+			_layers[_activeLayerIndex].playerContainer.removeChild(oldMask);
+			oldMask = null;
+
+			//remove old active layer
+			var oldLayer:Layer = _layers[_activeLayerIndex - 1];
+			oldLayer.setHidden();
+
+			//change the sound playing
+			playLayerSound();
+
+			_layerTransitionActive = false;
+
+			//TODO change shell mask here
+		}
+
+		/* NOT IMPLEMENTED
 		private function goUpLayer():void
 		{
 			trace("^^^ UP LAYER ^^^");
@@ -338,7 +366,7 @@ package
 			_playerAvatar.y = py;
 
 			_layerTransitionActive = false;
-		}
+		}*/
 
 		private function attachFollowAvatar(sprite:Sprite, speed:Number):void
 		{
@@ -356,6 +384,12 @@ package
 		private function detachFollowAvatar(sprite:Sprite):void
 		{
 			delete _followingMouseDict[sprite];
+		}
+
+		public function playerStart():void
+		{
+			_firstKeyPressed = true;
+			eaze(_hyperShell).play("inBegin0>inEnd0");
 		}
 	}
 }
