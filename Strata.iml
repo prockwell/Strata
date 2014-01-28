@@ -20,11 +20,24 @@
             <entry library-name="BlockLayer" library-level="project">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="TheMiner" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="Sounds" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="greensock" library-level="application">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="flexSDK" />
         </dependencies>
         <compiler-options />
-        <packaging-air-desktop package-file-name="Strata" />
+        <packaging-air-desktop use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Strata-app.xml" package-file-name="Strata">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/out/production/Strata/Strata.swf" path-in-package="Strata.swf" />
+          </files-to-package>
+        </packaging-air-desktop>
         <packaging-android />
         <packaging-ios />
       </configuration>
@@ -44,6 +57,9 @@
     <orderEntry type="library" exported="" name="SpikeLayer" level="project" />
     <orderEntry type="library" exported="" name="RingLayer" level="project" />
     <orderEntry type="library" exported="" name="BlockLayer" level="project" />
+    <orderEntry type="library" exported="" name="TheMiner" level="project" />
+    <orderEntry type="library" exported="" name="Sounds" level="project" />
+    <orderEntry type="library" exported="" name="greensock" level="application" />
   </component>
 </module>
 

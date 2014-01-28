@@ -1,2 +1,6 @@
 
 *.wav
+
+.idea/workspace.xml
+
+assets_raw/FLA/Sounds.fla

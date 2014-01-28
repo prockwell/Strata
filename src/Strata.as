@@ -2,9 +2,15 @@ package
 {
 	import aze.motion.eaze;
 
+	import com.greensock.TweenMax;
+	import com.sociodox.theminer.TheMiner;
+
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import flash.utils.Dictionary;
 
 	[SWF(backgroundColor="#000000", frameRate="30", width="1024", height="576")]
@@ -43,6 +49,11 @@ package
 		private const MASK_GROWTH_DISTANCE:Number = 200;
 		private const MASK_TRIGGER_DISTANCE:Number = 40;
 
+		private var _sounds:Vector.<Sound>;
+		private var _soundChannels:Vector.<SoundChannel>;
+		private const SOUND_VOLUME:Number = 8;
+
+
 	    public function Strata()
 	    {
 		    addEventListener(Event.ADDED_TO_STAGE, init);
@@ -51,6 +62,13 @@ package
 		private function init(e:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+
+			//MINER
+			this.addChild(new TheMiner());
+
+			this.mouseEnabled = false
+			this.mouseChildren = false;
+
 			_followingMouseDict = new Dictionary();
 
 			//CREATE LAYERS
@@ -80,7 +98,7 @@ package
 			_layers[TITLE_LAYER_INDEX].setHidden();
 
 			_maskContainer = new Sprite();
-			addChild(_maskContainer);
+			addChild(_maskContainer);<br />
 
 			//CREATE MASKS
 			masks = new Vector.<MovieClip>();
@@ -91,6 +109,31 @@ package
 
 			//create player
 			createAvatar();
+
+			//create sounds
+			_sounds = new Vector.<Sound>();
+			_sounds[TOP_LAYER_INDEX] = null;
+			_sounds[SPIKE_LAYER_INDEX] = new SpikeLayerSound();
+			_sounds[RING_LAYER_INDEX] = new RingLayerSound();
+			_sounds[BLOCK_LAYER_INDEX] = new BlockLayerSound();
+			_sounds[TITLE_LAYER_INDEX] = null;
+
+			//create sounds channels for each layer
+			_soundChannels = new Vector.<SoundChannel>();
+			for (var i:int = 0; i < _sounds.length; i ++)
+			{
+				if(_sounds[i])
+				{
+					_soundChannels[i] = _sounds[i].play(0, 99999, new SoundTransform(0));
+				}
+				else
+				{
+					_soundChannels[i] = null;
+				}
+			}
+
+			//play sound on first layer
+			playLayerSound();
 
 			//UPDATE
 			this.addEventListener(Event.ENTER_FRAME, update);
@@ -132,9 +175,19 @@ package
 			//GROW LAYER
 			if(distanceToCrack < MASK_GROWTH_DISTANCE)
 			{
+				//grow the mask
 				var maskScale:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, 6, 1, distanceToCrack);
 				_activeMask.scaleX = maskScale;
 				_activeMask.scaleY = maskScale;
+
+				//bleed volume in from layer below
+				var maskedVolume:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, SOUND_VOLUME, 0, distanceToCrack);
+				if(_soundChannels[_activeLayerIndex + 1])
+				{
+					var soundTransform:SoundTransform = _soundChannels[_activeLayerIndex + 1].soundTransform;
+					soundTransform.volume = maskedVolume;
+					_soundChannels[_activeLayerIndex + 1].soundTransform = soundTransform;
+				}
 
 				//GO DOWN LAYER
 				if(distanceToCrack < MASK_TRIGGER_DISTANCE)
@@ -143,7 +196,23 @@ package
 					eaze(_activeMask).to(MASK_ZOOM_TIME, {scaleX: 15, scaleY:10}).onComplete(goDownLayer);
 				}
 			}
+		}
 
+		//SOUNDS  --------------------------------------------
+
+		private function playLayerSound():void
+		{
+			//fade out last layer sounds if existing
+			if(_activeLayerIndex > TOP_LAYER_INDEX && _soundChannels[_activeLayerIndex - 1])
+			{
+				TweenMax.to(_soundChannels[_activeLayerIndex - 1], 1, {volume:0});
+			}
+
+			//fade in current layer sounds
+			if(_soundChannels[_activeLayerIndex])
+			{
+				TweenMax.to(_soundChannels[_activeLayerIndex], 1, {volume:SOUND_VOLUME});
+			}
 		}
 
 		//SPRITE CREATION ------------------------------------
@@ -155,6 +224,7 @@ package
 			_layers[_activeLayerIndex + 1].addChild(_playerAvatar);
 			_playerAvatar.x = stage.stageWidth / 2;
 			_playerAvatar.y = stage.stageHeight / 2;
+			_playerAvatar.rotation = 270;
 
 			//create avatar shell
 			_hyperShell = new HyperAvatarShell();
@@ -179,6 +249,7 @@ package
 			var startLabel:String = "inBegin"+_activeLayerIndex;
 			var endLabel:String = "inEnd"+_activeLayerIndex;
 			eaze(_hyperShell).play(startLabel + ">" + endLabel);
+			eaze(_subShell).play(startLabel + ">" + endLabel);
 		}
 
 		private function removeAvatarMask():void
@@ -191,6 +262,7 @@ package
 			var startLabel:String = "outBegin"+_activeLayerIndex;
 			var endLabel:String = "outEnd"+_activeLayerIndex;
 			eaze(_hyperShell).play(startLabel + ">" + endLabel);
+			eaze(_subShell).play(startLabel + ">" + endLabel);
 		}
 
 		//DIMENSION TRAVEL ------------------------------------
@@ -209,6 +281,9 @@ package
 			//update the active layer
 			_activeLayerIndex = _activeLayerIndex + 1;
 			_layers[_activeLayerIndex].setActive();
+
+			//change the sound playing
+			playLayerSound();
 
 			if(_activeLayerIndex == TITLE_LAYER_INDEX)
 			{

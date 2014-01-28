@@ -2,20 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/SWF/Main.swf" afterPath="$PROJECT_DIR$/assets/SWF/Main.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/Main.fla" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/Main.swc" afterPath="$PROJECT_DIR$/lib/Main.swc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets_raw/FLA/SpikeLayer.fla" afterPath="$PROJECT_DIR$/assets_raw/FLA/SpikeLayer.fla" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/SpikeLayer.swc" afterPath="$PROJECT_DIR$/lib/SpikeLayer.swc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="Strata.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390846892803" ignored="false" />
-    <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390765228872" ignored="false" />
-    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390765769998" ignored="false" />
+    <file path="/Dummy.txt" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390861597831" ignored="false" />
+    <file path="/fragment.js2" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390858725335" ignored="false" />
+    <file path="/Strata.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390863174187" ignored="false" />
     <file path="/Creature.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390628706030" ignored="false" />
     <file path="/Follower.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390664058195" ignored="false" />
     <file path="/a.dummy" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390735823289" ignored="false" />
     <file path="/Layer.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390715506089" ignored="false" />
     <file path="/Avatar.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390707765615" ignored="false" />
     <file path="/Utils.as" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390710062230" ignored="false" />
+    <file path="/Strata-app.xml" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390859279729" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390863804668" ignored="false" />
+    <file path="$PROJECT_DIR$/lib/Main.swc!/catalog.xml" changelist="8bc45d3a-db0f-438a-b101-2cdcf83af8a4" time="1390869256844" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +86,7 @@
       <file leaf-file-name="Strata.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Strata.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="215" column="13" selection-start="6003" selection-end="6003" vertical-scroll-proportion="0.020604396">
+            <state line="182" column="27" selection-start="5019" selection-end="5019" vertical-scroll-proportion="-1.8216319">
               <folding>
                 <element signature="e#11#34#0" expanded="true" />
               </folding>
@@ -90,7 +97,7 @@
       <file leaf-file-name="Utils.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Utils.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="22" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
+            <state line="20" column="56" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -148,6 +155,7 @@
         <option value="$PROJECT_DIR$/src/Avatar.as" />
         <option value="$PROJECT_DIR$/src/Utils.as" />
         <option value="$PROJECT_DIR$/src/Layer.as" />
+        <option value="$PROJECT_DIR$/Strata-app.xml" />
         <option value="$PROJECT_DIR$/src/Strata.as" />
       </list>
     </option>
@@ -204,6 +212,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -264,20 +273,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Strata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Strata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets_raw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FLA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.General" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/BlockLayer.swc!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/production/Strata/Strata.swf" />
     <property name="project.structure.side.proportion" value="0.14602804" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -449,7 +475,11 @@
       <created>1390628973803</created>
       <updated>1390628973803</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="adding the followers and creature classes">
+      <created>1390861172141</created>
+      <updated>1390861172141</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -474,14 +504,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18965517" sideWeight="0.49964714" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47354499" sideWeight="0.49964714" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14396612" sideWeight="0.5450928" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45490715" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21312632" sideWeight="0.73607427" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26392573" sideWeight="0.49964714" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5066313" sideWeight="0.50035286" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23342176" sideWeight="0.49964714" order="2" side_tool="false" content_ui="tabs" />
@@ -493,7 +524,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.49964714" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -561,23 +591,11 @@
     <MESSAGE value="adding the followers and creature classes" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Avatar.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="45" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Layer.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Creature.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="8" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
@@ -624,11 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Code/flexSDK/frameworks/libs/air/airglobal.swc!/library.swf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1032" column="13" selection-start="47170" selection-end="47170" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/senocular/utils/KeyObject.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="24" selection-start="529" selection-end="529" vertical-scroll-proportion="0.4379562" />
@@ -637,13 +650,6 @@
     <entry file="file://$PROJECT_DIR$/src/Avatar.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="45" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="22" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -660,19 +666,47 @@
         <state line="251" column="0" selection-start="6277" selection-end="6277" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strata.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="13" selection-start="6003" selection-end="6003" vertical-scroll-proportion="0.020604396">
-          <folding>
-            <element signature="e#11#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Creature.as">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="8" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Strata-app.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="0" selection-start="2897" selection-end="2897" vertical-scroll-proportion="-4.865759">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Code/flexSDK/frameworks/libs/air/airglobal.swc!/library.swf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12552" column="69" selection-start="553019" selection-end="553019" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Code/flexSDK/frameworks/libs/player/11.4/playerglobal.swc!/library.swf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3321" column="0" selection-start="142218" selection-end="142218" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="56" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strata.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="27" selection-start="5019" selection-end="5019" vertical-scroll-proportion="-1.8216319">
+          <folding>
+            <element signature="e#11#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -693,7 +727,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>src</last-edited>
+          <last-edited>greensock</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -741,7 +775,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>TheMiner</last-edited>
+          <last-edited>Sounds</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

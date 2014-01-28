@@ -48,10 +48,10 @@
     <!-- Settings for the application's initial window. Required. -->
     <initialWindow>
         <!-- The main SWF or HTML file of the application. Required. -->
-        <content>Strata.swf</content>
+        <content>SWF file name is set automatically at compile time</content>
 
         <!-- The title of the main window. Optional. -->
-        <!--<title></title>-->
+        <title>STRATA</title>
 
         <!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
         <!--<systemChrome></systemChrome>-->
@@ -66,10 +66,10 @@
         <!--<minimizable></minimizable>-->
 
         <!-- Whether the user can maximize the window. Optional. Default true. -->
-        <!--<maximizable></maximizable>-->
+        <maximizable>false</maximizable>
 
         <!-- Whether the user can resize the window. Optional. Default true. -->
-        <!--<resizable></resizable>-->
+        <resizable>false</resizable>
 
         <!-- The window's initial width in pixels. Optional. -->
         <!--<width></width>-->
@@ -99,7 +99,7 @@
         <!--<fullScreen></fullScreen>-->
 
         <!-- The render mode for the app (either auto, cpu, gpu, or direct). Optional. Default auto -->
-        <!--<renderMode></renderMode>-->
+        <renderMode>direct</renderMode>
 
         <!-- Whether the default direct mode rendering context allocates storage for depth and stencil buffers.  Optional.  Default false. -->
         <!--<depthAndStencil></depthAndStencil>-->
