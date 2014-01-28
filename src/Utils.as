@@ -6,6 +6,9 @@
  */
 package
 {
+	import flash.display.Shape;
+	import flash.geom.Rectangle;
+
 	public class Utils
 	{
 		public static function convertRange(originalStart:Number,
@@ -27,6 +30,21 @@ package
 			var dx:Number = x1-x2;
 			var dy:Number = y1-y2;
 			return Math.sqrt(dx * dx + dy * dy);
+		}
+
+		public static function randomMinMax(min:int, max:int):int
+		{
+			return min + Math.round(Math.random()*(max - min));
+		}
+
+		public static function createDebugSquare(size:Number = 60):Shape
+		{
+			var rect:Shape = new Shape();
+			rect.graphics.lineStyle(2,0xffff0000);
+			rect.graphics.drawRect(-size/2, -size/2, size, size);
+			rect.graphics.endFill();
+
+			return rect;
 		}
 
 	}

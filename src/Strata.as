@@ -7,6 +7,7 @@ package
 	import com.sociodox.theminer.TheMiner;
 
 	import flash.display.MovieClip;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.html.script.Package;
@@ -34,6 +35,8 @@ package
 
 		private var _firstKeyPressed:Boolean = false;
 
+		private const MAX_MASK_GROW_SIZE:Number = 5;
+
 		//{
 		//  sprite:Sprite
 		//  speed:Number
@@ -44,6 +47,8 @@ package
 
 		private var masks:Vector.<MovieClip>;
 
+		private var _debugSquare:Shape;
+
 		//ANIMATIONS
 		private const MASK_ZOOM_TIME:Number = 0.8;
 
@@ -52,6 +57,8 @@ package
 		private const MASK_GROWTH_DISTANCE:Number = 200;
 		private const MASK_TRIGGER_DISTANCE:Number = 40;
 		private const MASK_FINAL_GROW_SIZE:Number = 14;
+		private const FINAL_DELAY_TIME:Number = 1;
+		private const FINAL_ANIM_OUT_TIME:Number = 2;
 
 		private var _sounds:Vector.<Sound>;
 		private var _soundChannels:Vector.<SoundChannel>;
@@ -79,11 +86,11 @@ package
 
 			//CREATE LAYERS
 			_layers = new Vector.<Layer>();
-			_layers[TOP_LAYER_INDEX] = new Layer(new TopLayer());
+			_layers[TOP_LAYER_INDEX] = new Layer(new TopLayer(), true, false); //do not randomize the position in the center of the screen.
 			_layers[SPIKE_LAYER_INDEX] = new Layer(new SpikeLayer());
 			_layers[RING_LAYER_INDEX] = new Layer(new RingLayer());
 			_layers[BLOCK_LAYER_INDEX] = new Layer(new BlockLayer());
-			_layers[TITLE_LAYER_INDEX] = new Layer(new TitleLayer());
+			_layers[TITLE_LAYER_INDEX] = new Layer(new TitleLayer(), false); //don't randomize crack on last layer
 
 			//set active layer to the top
 			_activeLayerIndex = TOP_LAYER_INDEX;
@@ -155,6 +162,17 @@ package
 				}
 			}
 
+			if (key.isDown(Keyboard.TAB))
+			{
+				showCrackLocation();
+			}
+			else if (_debugSquare)
+			{
+				hideCrackLocation();
+			}
+
+
+
 			//MOUSE FOLLOWING OBJECTS
 			for each (var followObject:Object in _followingMouseDict)
 			{
@@ -189,7 +207,7 @@ package
 				if(distanceToCrack < MASK_GROWTH_DISTANCE)
 				{
 					//grow the mask
-					var maskScale:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, 6, 1, distanceToCrack);
+					var maskScale:Number = Utils.convertRange(0, MASK_GROWTH_DISTANCE, MAX_MASK_GROW_SIZE, 1, distanceToCrack);
 					_activeMask.scaleX = maskScale;
 					_activeMask.scaleY = maskScale;
 
@@ -247,6 +265,7 @@ package
 			this.addChild(_hyperShell);
 			attachFollowAvatar(_hyperShell, 7);
 			createAvatarMask();
+			//add creation hyper shell
 		}
 
 		private function createAvatarMask():void
@@ -257,16 +276,6 @@ package
 			_layers[_activeLayerIndex + 1].playerContainer.addChild(_activeMask);
 			_layers[_activeLayerIndex + 1].mask = _activeMask;
 			attachFollowAvatar(_activeMask, 4);
-
-			if(_firstKeyPressed)
-			{
-				_hyperShell.scaleX = 1;
-				_hyperShell.scaleY = 1;
-
-				var startLabel:String = "inBegin"+_activeLayerIndex;
-				var endLabel:String = "inEnd"+_activeLayerIndex;
-				eaze(_hyperShell).play(startLabel + ">" + endLabel);
-			}
 		}
 
 		private function removeAvatarMask():void
@@ -301,12 +310,23 @@ package
 			newMaskLayer.setMasked();
 
 			//create new mask
-			createAvatarMask();
+			_activeMask = masks[_activeLayerIndex];
+			_activeMask.scaleX = 1;
+			_activeMask.scaleY = 1;
+			_layers[_activeLayerIndex + 1].playerContainer.addChild(_activeMask);
+			_layers[_activeLayerIndex + 1].mask = _activeMask;
+			_activeMask.x = _layers[_activeLayerIndex].crack.x;
+			_activeMask.y = _layers[_activeLayerIndex].crack.y;
 
-			//animate in the mask
+			//animate the mask onto the avatar before setting it to follow
 			_activeMask.scaleX = 0.2;
 			_activeMask.scaleY = 0.2;
 			eaze(_activeMask).to(0.5, {scaleX:1, scaleY:1});
+			attachFollowAvatar(_activeMask, 4, false);
+
+			//hide crack visibility immediately
+			_layers[_activeLayerIndex].crack.visible = false;
+
 
 			//place the avatar into the new mask
 			var px:Number = _playerAvatar.x;
@@ -333,7 +353,23 @@ package
 
 			_layerTransitionActive = false;
 
-			//TODO change shell mask here
+			if(_activeLayerIndex != TITLE_LAYER_INDEX)
+			{
+				_hyperShell.scaleX = 1;
+				_hyperShell.scaleY = 1;
+
+				var startLabel:String = "inBegin"+_activeLayerIndex;
+				var endLabel:String = "inEnd"+_activeLayerIndex;
+
+				eaze(_hyperShell).play(startLabel + ">" + endLabel);
+			}
+
+			//when on the last frame fade out the player
+			if(_activeLayerIndex == TITLE_LAYER_INDEX)
+			{
+				trace("THE END.");
+				eaze(_playerAvatar).delay(FINAL_DELAY_TIME).to(FINAL_ANIM_OUT_TIME, { alpha:0 });
+			}
 		}
 
 		/* NOT IMPLEMENTED
@@ -368,13 +404,13 @@ package
 			_layerTransitionActive = false;
 		}*/
 
-		private function attachFollowAvatar(sprite:Sprite, speed:Number):void
+		private function attachFollowAvatar(sprite:Sprite, speed:Number, setPosImmediately:Boolean = true):void
 		{
 			var followObject:Object = {sprite: sprite, speed: speed };
 			_followingMouseDict[sprite] = followObject;
 
-			//start sprite positioned on mouse
-			if(_playerAvatar)
+			//start sprite positioned on the avatar if desired
+			if(_playerAvatar && setPosImmediately)
 			{
 				sprite.x = _playerAvatar.x;
 				sprite.y = _playerAvatar.y;
@@ -390,6 +426,29 @@ package
 		{
 			_firstKeyPressed = true;
 			eaze(_hyperShell).play("inBegin0>inEnd0");
+		}
+
+		private function showCrackLocation():void
+		{
+			if(!_debugSquare)
+			{
+				if(_activeLayerIndex < _layers.length - 1)
+				{
+					_debugSquare = Utils.createDebugSquare();
+					_debugSquare.x = _layers[_activeLayerIndex + 1].crack.x;
+					_debugSquare.y = _layers[_activeLayerIndex + 1].crack.y;
+					this.addChild(_debugSquare);
+				}
+			}
+		}
+
+		private function hideCrackLocation():void
+		{
+			if (_debugSquare)
+			{
+				this.removeChild(_debugSquare);
+				_debugSquare = null;
+			}
 		}
 	}
 }
