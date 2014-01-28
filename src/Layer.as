@@ -12,6 +12,7 @@ package
 	{
 		public var crack:MovieClip;
 		public var nasty:MovieClip
+		public var playerContainer:MovieClip;
 		private var _skin:MovieClip;
 
 		public function Layer(skin:MovieClip)
@@ -19,6 +20,12 @@ package
 			_skin = skin;
 			crack = _skin.crack;
 			nasty = _skin.nasty;
+			playerContainer = _skin.playerContainer;
+
+			if(!playerContainer)
+			{
+				trace("A LAYER DOES NOT CONTAIN A PLAYER CONTAINER");
+			}
 
 			if(!crack)
 			{

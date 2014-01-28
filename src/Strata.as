@@ -39,7 +39,6 @@ package
 		private var _layerTransitionActive:Boolean;
 
 		private var masks:Vector.<MovieClip>;
-		private var _maskContainer:Sprite;
 
 		//ANIMATIONS
 		private const MASK_ZOOM_TIME:Number = 0.4;
@@ -96,9 +95,6 @@ package
 
 			addChild(_layers[TITLE_LAYER_INDEX]);
 			_layers[TITLE_LAYER_INDEX].setHidden();
-
-			_maskContainer = new Sprite();
-			addChild(_maskContainer);<br />
 
 			//CREATE MASKS
 			masks = new Vector.<MovieClip>();
@@ -221,7 +217,7 @@ package
 		{
 			//create avatar ship
 			_playerAvatar = new PlayerAvatar();
-			_layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_layers[_activeLayerIndex + 1].playerContainer.addChild(_playerAvatar);
 			_playerAvatar.x = stage.stageWidth / 2;
 			_playerAvatar.y = stage.stageHeight / 2;
 			_playerAvatar.rotation = 270;
@@ -242,7 +238,7 @@ package
 			_activeMask = masks[_activeLayerIndex];
 			_activeMask.scaleX = 1;
 			_activeMask.scaleY = 1;
-			_maskContainer.addChild(_activeMask);
+			_layers[_activeLayerIndex + 1].playerContainer.addChild(_activeMask);
 			_layers[_activeLayerIndex + 1].mask = _activeMask;
 			attachFollowAvatar(_activeMask, 4);
 
@@ -256,7 +252,7 @@ package
 		{
 			_layers[_activeLayerIndex + 1].mask = null;
 			detachFollowAvatar(_activeMask);
-			_maskContainer.removeChild(_activeMask);
+			_layers[_activeLayerIndex + 1].playerContainer.removeChild(_activeMask);
 			_activeMask = null;
 
 			var startLabel:String = "outBegin"+_activeLayerIndex;
@@ -305,8 +301,8 @@ package
 			//place the avatar into the new mask
 			var px:Number = _playerAvatar.x;
 			var py:Number = _playerAvatar.y;
-			_layers[_activeLayerIndex].removeChild(_playerAvatar);
-			_layers[_activeLayerIndex + 1].addChild(_playerAvatar);
+			_layers[_activeLayerIndex].playerContainer.removeChild(_playerAvatar);
+			_layers[_activeLayerIndex + 1].playerContainer.addChild(_playerAvatar);
 			_playerAvatar.x = px;
 			_playerAvatar.y = py;
 
