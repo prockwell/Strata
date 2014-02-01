@@ -16,67 +16,28 @@ package
 		private const STAGE_WIDTH:int = 1024;
 		private const STAGE_HEIGHT:int = 576;
 		private const CRACK_SIDE_DEAD_ZONE:int = 20;
-		private const CRACK_CENTER_DEAD_ZONE:int = 400;
+		private const CRACK_AVOIDANCE_ZONE:int = 400;
 
 		public var crack:MovieClip;
 		public var nasty:MovieClip
 		public var playerContainer:MovieClip;
 		private var _skin:MovieClip;
+		private var _randomizeCrackPos:Boolean;
 
-		public function Layer(skin:MovieClip, randomizeCrackPos:Boolean = true, crackAllowedInCenter:Boolean = true)
+		public function Layer(skin:MovieClip, randomizeCrackPos:Boolean = true)
 		{
 			_skin = skin;
 			crack = _skin.crack;
 			nasty = _skin.nasty;
 			playerContainer = _skin.playerContainer;
+			_randomizeCrackPos = randomizeCrackPos;
 
 			if(!playerContainer)
 			{
 				trace("A LAYER DOES NOT CONTAIN A PLAYER CONTAINER");
 			}
 
-			if(crack)
-			{
-				if(randomizeCrackPos)
-				{
-					randomizeCrackPosition();
-
-					if(crackAllowedInCenter)
-					{
-						var centerRect:Rectangle = new Rectangle(STAGE_WIDTH/2 - CRACK_CENTER_DEAD_ZONE/2, STAGE_HEIGHT/2 - CRACK_CENTER_DEAD_ZONE/2, CRACK_CENTER_DEAD_ZONE, CRACK_CENTER_DEAD_ZONE);
-
-						/*
-						//TEST CRACK RANDOMIZATION LOCATION
-
-						var h:int = 700;
-						while(h != 0)
-						{
-							var rect:Shape = Utils.createDebugSquare();
-
-
-							rect.x = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_WIDTH - CRACK_SIDE_DEAD_ZONE);
-							rect.y = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_HEIGHT - CRACK_SIDE_DEAD_ZONE);
-
-							while(centerRect.contains(rect.x, rect.y))
-							{
-								rect.x = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_WIDTH - CRACK_SIDE_DEAD_ZONE);
-								rect.y = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_HEIGHT - CRACK_SIDE_DEAD_ZONE);
-							}
-
-							addChild(rect);
-
-							h--;
-						}
-						*/
-
-						while(centerRect.contains(crack.x,crack.y))
-						{
-							randomizeCrackPosition();
-						}
-					}
-				}
-			}
-			else
+			if(!crack)
 			{
 				trace("A LAYER DOES NOT CONTAIN A CRACK");
 			}
@@ -85,7 +46,46 @@ package
 			asleep();
 		}
 
-		public function randomizeCrackPosition():void
+		public function randomizeCrackPosition(avoidPos:Point):void
+		{
+			//do not randomize the crack on the last layer
+			if(!_randomizeCrackPos)
+			{
+				return;
+			}
+
+			var avoidRect:Rectangle = new Rectangle(avoidPos.x - CRACK_AVOIDANCE_ZONE/2, avoidPos.y - CRACK_AVOIDANCE_ZONE/2, CRACK_AVOIDANCE_ZONE, CRACK_AVOIDANCE_ZONE);
+
+			 //TEST CRACK RANDOMIZATION LOCATION
+//			 var h:int = 700;
+//			 while(h != 0)
+//			 {
+//				 var rect:Shape = Utils.createDebugSquare();
+//
+//
+//				 rect.x = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_WIDTH - CRACK_SIDE_DEAD_ZONE);
+//				 rect.y = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_HEIGHT - CRACK_SIDE_DEAD_ZONE);
+//
+//				 while(avoidRect.contains(rect.x, rect.y))
+//				 {
+//					 rect.x = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_WIDTH - CRACK_SIDE_DEAD_ZONE);
+//					 rect.y = Utils.randomMinMax(CRACK_SIDE_DEAD_ZONE, STAGE_HEIGHT - CRACK_SIDE_DEAD_ZONE);
+//				 }
+//
+//				 addChild(rect);
+//
+//				 h--;
+//			 }
+
+
+			while(avoidRect.contains(crack.x,crack.y))
+			{
+				findRandomPosition();
+			}
+
+		}
+
+		private function findRandomPosition():void
 		{
 			var crackPosition:Point = new Point;
 

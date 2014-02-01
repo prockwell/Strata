@@ -10,6 +10,7 @@ package
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.geom.Point;
 	import flash.html.script.Package;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
@@ -86,7 +87,7 @@ package
 
 			//CREATE LAYERS
 			_layers = new Vector.<Layer>();
-			_layers[TOP_LAYER_INDEX] = new Layer(new TopLayer(), true, false); //do not randomize the position in the center of the screen.
+			_layers[TOP_LAYER_INDEX] = new Layer(new TopLayer()); //do not randomize the position in the center of the screen.
 			_layers[SPIKE_LAYER_INDEX] = new Layer(new SpikeLayer());
 			_layers[RING_LAYER_INDEX] = new Layer(new RingLayer());
 			_layers[BLOCK_LAYER_INDEX] = new Layer(new BlockLayer());
@@ -170,8 +171,6 @@ package
 			{
 				hideCrackLocation();
 			}
-
-
 
 			//MOUSE FOLLOWING OBJECTS
 			for each (var followObject:Object in _followingMouseDict)
@@ -265,7 +264,9 @@ package
 			this.addChild(_hyperShell);
 			attachFollowAvatar(_hyperShell, 7);
 			createAvatarMask();
-			//add creation hyper shell
+
+			//randomize crack location so that it does not appear on top of the player
+			_layers[_activeLayerIndex + 1].randomizeCrackPosition(new Point(_playerAvatar.x, _playerAvatar.y));
 		}
 
 		private function createAvatarMask():void
@@ -327,7 +328,6 @@ package
 			//hide crack visibility immediately
 			_layers[_activeLayerIndex].crack.visible = false;
 
-
 			//place the avatar into the new mask
 			var px:Number = _playerAvatar.x;
 			var py:Number = _playerAvatar.y;
@@ -335,6 +335,9 @@ package
 			_layers[_activeLayerIndex + 1].playerContainer.addChild(_playerAvatar);
 			_playerAvatar.x = px;
 			_playerAvatar.y = py;
+
+			//randomize crack location so that it does not appear on top of the player
+			_layers[_activeLayerIndex + 1].randomizeCrackPosition(new Point(_playerAvatar.x, _playerAvatar.y));
 		}
 
 		private function goDownEnd(oldMask:MovieClip):void
